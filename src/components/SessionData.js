@@ -23,31 +23,31 @@ export const SessionData = () => {
   // Handle user selection for treatment AREA
   const [area, setArea] = useState('');
   const handleArea = (event) => {
-    setArea(event.target.value);
+    setArea(document.getElementById('select-area').value);
   };
 
   // Handle user selection for TARGET (receptive/expressive/both)
   const [target, setTarget] = useState('');
   const handleTarget = (event) => {
-    setTarget(event.target.value);
+    setTarget(document.getElementById('select-target').value);
   };
 
   // Handle user selection for PHASE
   const [phase, setPhase] = useState('');
   const handlePhase = (event) => {
-    setPhase(event.target.value);
+    setPhase(document.getElementById('select-phase').value);
   };
 
   // Handle user selection for ACTIVITY
   const [activity, setActivity] = useState('');
   const handleActivity = (event) => {
-    setActivity(event.target.value);
+    setActivity(document.getElementById('select-activity').value);
   };
 
   // Handle user selection for data FORMAT
   const [format, setFormat] = useState('');
   const handleFormat = (event) => {
-    setFormat(event.target.value);
+    setFormat(document.getElementById('select-format').value);
   };
 
   
@@ -57,19 +57,19 @@ export const SessionData = () => {
   //   Handle user input for scaffold QUANTITY
   const [modality, setModality] = useState('');
   const handleModality = (event) => {
-    setModality(event.target.value);
+    setModality(document.getElementById('select-quantity').value);
   };
 
  //   Handle user input for scaffold MODALITY
  const [quantity, setQuantity] = useState('');
  const handleQuantity = (event) => {
-   setQuantity(event.target.value);
+   setQuantity(document.getElementById('select-modality').value);
  };
 
   // Handle user input for scaffold TYPE
   const [type, setType] = useState('');
   const handleType = (event) => {
-    setType(event.target.value);
+    setType(document.getElementById('select-type').value);
   };
   // Handle user selection for ADDITIONAL TARGET
   const [addTarget, setAddTarget] = useState(false);

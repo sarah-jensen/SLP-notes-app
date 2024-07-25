@@ -14,13 +14,13 @@ export const StudentObs = () => {
     // Handle use selection for FOCUS
   const [focus, setFocus] = useState('');
   const handleFocus = (event) => {
-    setFocus(event.target.value);
+    setFocus(document.getElementById('focus').value);
   };
 
   // Handle use selection for ENGAGEMENT
   const [engagement, setEngagement] = useState('');
   const handleEngagement = (event) => {
-    setEngagement(event.target.value);
+    setEngagement(document.getElementById('engagement').value);
   };
 
   return (
