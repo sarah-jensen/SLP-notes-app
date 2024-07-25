@@ -3,6 +3,10 @@
 import React, { useState } from 'react';
 
 import {
+  Percentage
+} from './Percentage.js';
+
+import {
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -46,11 +50,7 @@ export const SessionData = () => {
     setFormat(event.target.value);
   };
 
-  // Handle user input for INDEPENDENT accuracy
-  const [independent, setIndependent] = useState('');
-  const handleIndependent = (event) => {
-    setIndependent(event.target.value);
-  };
+  
 
   //TODO: Handle user input for SUPPORTED accuracy
 
@@ -179,43 +179,7 @@ export const SessionData = () => {
         </Select>
       </FormControl>
 
-      <Typography>Independent Accuracy</Typography>
-
-      <FormControl
-        variant='standard'
-        sx={{ m: 1, mt: 3, width: '25ch' }}
-      >
-        <Input
-          id='independent-input'
-          endAdornment={<InputAdornment position='end'>%</InputAdornment>}
-          aria-describedby='independent-input-helper-text'
-          inputProps={{
-            'aria-label': 'independent-input',
-          }}
-        />
-        <FormHelperText id='standard-weight-helper-text'>
-          Independent Accuracy
-        </FormHelperText>
-      </FormControl>
-
-      <Typography>Supported Accuracy</Typography>
-
-      <FormControl
-        variant='standard'
-        sx={{ m: 1, mt: 3, width: '25ch' }}
-      >
-        <Input
-          id='scaffolded-input'
-          endAdornment={<InputAdornment position='end'>%</InputAdornment>}
-          aria-describedby='scaffolded-input-helper-text'
-          inputProps={{
-            'aria-label': 'scaffolded-input',
-          }}
-        />
-        <FormHelperText id='standard-weight-helper-text'>
-          Scaffolded Accuracy
-        </FormHelperText>
-      </FormControl>
+      <Percentage></Percentage>
 
       <FormControl
         required
