@@ -114,7 +114,7 @@ export const SessionData = () => {
         >
           <MenuItem value={'comprehension'}>Comprehension</MenuItem>
           <MenuItem value={'expression'}>Expression</MenuItem>
-          <MenuItem value={'both comprehension and expression'}>Both</MenuItem>
+          <MenuItem value={'comprehension and expression'}>Both</MenuItem>
         </Select>
       </FormControl>
 
