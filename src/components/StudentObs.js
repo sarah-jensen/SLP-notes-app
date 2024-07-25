@@ -27,7 +27,7 @@ export const StudentObs = () => {
     <div>
      <Typography>Observation of Student</Typography>
       
-      <FormControl sx={{ m: 1, minWidth: 240 }}>
+      <FormControl sx={{ m: 1, minWidth: 240 }} required>
         <InputLabel id='focus-label'>Focus</InputLabel>
         <Select
           labelId='focus-label'
@@ -43,7 +43,7 @@ export const StudentObs = () => {
         </Select>
       </FormControl>
       
-      <FormControl sx={{ m: 1, minWidth: 240 }}>
+      <FormControl sx={{ m: 1, minWidth: 240 }} required>
         <InputLabel id='engagement-label'>Engagement</InputLabel>
         <Select
           labelId='engagement-label'
@@ -53,9 +53,9 @@ export const StudentObs = () => {
           onChange={handleEngagement}
         >
           {/* and was ___ */}
-          <MenuItem value={'typically engaged'}>Typical</MenuItem>
-          <MenuItem value={'less engaged than usual'}>Less than usual</MenuItem>
-          <MenuItem value={'more engaged than usual'}>More than usual</MenuItem>
+          <MenuItem value={'typical engagement'}>Typical</MenuItem>
+          <MenuItem value={'less engagement than usual'}>Less than usual</MenuItem>
+          <MenuItem value={'more engagement than usual'}>More than usual</MenuItem>
         </Select>
       </FormControl>
 
