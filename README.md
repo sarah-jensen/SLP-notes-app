@@ -13,4 +13,4 @@
   This project is licensed under the MIT License - see Badge link for details.
   
   ## Questions
-  If you have any questions or issues with the repo, please reach out to "[Sarah Jensen](https://github.com/sarah-jensen)" or create an issue in the "["repo"](https://github.com/sarah-jensen/SLP-notes-app)".
+  If you have any questions or issues with the repo, please reach out to [Sarah Jensen](https://github.com/sarah-jensen) or create an issue in the [repo](https://github.com/sarah-jensen/SLP-notes-app).
