@@ -8,6 +8,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  TextField,
   Typography,
 } from '@mui/material';
 
@@ -83,12 +84,24 @@ export const SessionType = () => {
           control={
             <Checkbox
               id='makeup'
+              name='makeup'
               onChange={toggleMakeup}
             />
           }
           label='Makeup'
         />
       </FormControl>
+
+      <FormControl sx={{ m: 1, minWidth: 240 }}>
+      <TextField
+        id='makeup-date'
+        label='Date of Missed Session'
+        name='makeup-date'
+        multiline
+        defaultValue=''
+        onChange={handleInputChange}
+      />
+    </FormControl>
     </div>
   );
 };
