@@ -2,75 +2,40 @@
 
 import React, { useState } from 'react';
 
-import {
-  Percentage
-} from './Percentage.js';
+import { Percentage } from './Percentage.js';
 
 import {
   Checkbox,
   FormControl,
   FormControlLabel,
-  FormHelperText,
-  Input,
-  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
   Typography,
 } from '@mui/material';
 
+const initialValues = {
+  area: '',
+  target: '',
+  phase: '',
+  activity: '',
+  format: '',
+  modality: '',
+  quantity: '',
+  type: '',
+};
 export const SessionData = () => {
-  // Handle user selection for treatment AREA
-  const [area, setArea] = useState('');
-  const handleArea = (event) => {
-    setArea(document.getElementById('select-area').value);
+  const [data, setData] = useState(initialValues);
+  // Update state with user selections
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [e.target.name]: value,
+    });
   };
-
-  // Handle user selection for TARGET (receptive/expressive/both)
-  const [target, setTarget] = useState('');
-  const handleTarget = (event) => {
-    setTarget(document.getElementById('select-target').value);
-  };
-
-  // Handle user selection for PHASE
-  const [phase, setPhase] = useState('');
-  const handlePhase = (event) => {
-    setPhase(document.getElementById('select-phase').value);
-  };
-
-  // Handle user selection for ACTIVITY
-  const [activity, setActivity] = useState('');
-  const handleActivity = (event) => {
-    setActivity(document.getElementById('select-activity').value);
-  };
-
-  // Handle user selection for data FORMAT
-  const [format, setFormat] = useState('');
-  const handleFormat = (event) => {
-    setFormat(document.getElementById('select-format').value);
-  };
-
-  
-
-  //TODO: Handle user input for SUPPORTED accuracy
-
-  //   Handle user input for scaffold QUANTITY
-  const [modality, setModality] = useState('');
-  const handleModality = (event) => {
-    setModality(document.getElementById('select-quantity').value);
-  };
-
- //   Handle user input for scaffold MODALITY
- const [quantity, setQuantity] = useState('');
- const handleQuantity = (event) => {
-   setQuantity(document.getElementById('select-modality').value);
- };
-
-  // Handle user input for scaffold TYPE
-  const [type, setType] = useState('');
-  const handleType = (event) => {
-    setType(document.getElementById('select-type').value);
-  };
+  console.log(data);
+ 
   // Handle user selection for ADDITIONAL TARGET
   const [addTarget, setAddTarget] = useState(false);
   const toggleAddTarget = () => {
@@ -88,15 +53,16 @@ export const SessionData = () => {
         <Select
           labelId='select-area-label'
           id='select-area'
-          value={area}
+          name='area'
+          value={data.area}
           label='Goal Area'
-          onChange={handleArea}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'artic/phono'}>Articulation/Phonology</MenuItem>
-          <MenuItem value={'semantics'}>Semantics</MenuItem>
-          <MenuItem value={'morphology'}>Morphology</MenuItem>
-          <MenuItem value={'syntax'}>Syntax</MenuItem>
-          <MenuItem value={'pragmatics'}>Pragmatics</MenuItem>
+          <MenuItem value='artic/phono'>Articulation/Phonology</MenuItem>
+          <MenuItem value='semantics'>Semantics</MenuItem>
+          <MenuItem value='morphology'>Morphology</MenuItem>
+          <MenuItem value='syntax'>Syntax</MenuItem>
+          <MenuItem value='pragmatics'>Pragmatics</MenuItem>
         </Select>
       </FormControl>
 
@@ -108,13 +74,14 @@ export const SessionData = () => {
         <Select
           labelId='select-target-label'
           id='select-target'
-          value={target}
+          name='target'
+          value={data.target}
           label='Target'
-          onChange={handleTarget}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'comprehension'}>Comprehension</MenuItem>
-          <MenuItem value={'expression'}>Expression</MenuItem>
-          <MenuItem value={'comprehension and expression'}>Both</MenuItem>
+          <MenuItem value='comprehension'>Comprehension</MenuItem>
+          <MenuItem value='expression'>Expression</MenuItem>
+          <MenuItem value='comprehension and expression'>Both</MenuItem>
         </Select>
       </FormControl>
 
@@ -126,15 +93,16 @@ export const SessionData = () => {
         <Select
           labelId='select-phase-label'
           id='select-phase'
-          value={phase}
+          name='phase'
+          value={data.phase}
           label='Phase'
-          onChange={handlePhase}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'awareness'}>Awareness</MenuItem>
-          <MenuItem value={'learning'}>Learning</MenuItem>
-          <MenuItem value={'practice'}>Practice</MenuItem>
-          <MenuItem value={'automaticity'}>Automaticity</MenuItem>
-          <MenuItem value={'generalization'}>Generalization</MenuItem>
+          <MenuItem value='awareness'>Awareness</MenuItem>
+          <MenuItem value='learning'>Learning</MenuItem>
+          <MenuItem value='practice'>Practice</MenuItem>
+          <MenuItem value='automaticity'>Automaticity</MenuItem>
+          <MenuItem value='generalization'>Generalization</MenuItem>
         </Select>
       </FormControl>
 
@@ -146,18 +114,19 @@ export const SessionData = () => {
         <Select
           labelId='select-activity-label'
           id='select-activity'
-          value={activity}
+          name='activity'
+          value={data.activity}
           label='Activity'
-          onChange={handleActivity}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'picture book'}>Picture book</MenuItem>
-          <MenuItem value={'cause-effect'}>Cause-Effect</MenuItem>
-          <MenuItem value={'picture cards'}>Picture cards</MenuItem>
-          <MenuItem value={'story cards'}>Story cards</MenuItem>
-          <MenuItem value={'boardgame'}>Board game</MenuItem>
-          <MenuItem value={'video clip'}>Video clip</MenuItem>
-          <MenuItem value={'play-based'}>Play-based</MenuItem>
-          <MenuItem value={'trivia-style game'}>Trivia-style game</MenuItem>
+          <MenuItem value='picture book'>Picture book</MenuItem>
+          <MenuItem value='cause-effect'>Cause-Effect</MenuItem>
+          <MenuItem value='picture cards'>Picture cards</MenuItem>
+          <MenuItem value='story cards'>Story cards</MenuItem>
+          <MenuItem value='boardgame'>Board game</MenuItem>
+          <MenuItem value='video clip'>Video clip</MenuItem>
+          <MenuItem value='play-based'>Play-based</MenuItem>
+          <MenuItem value='trivia-style game'>Trivia-style game</MenuItem>
         </Select>
       </FormControl>
 
@@ -169,13 +138,14 @@ export const SessionData = () => {
         <Select
           labelId='select-format-label'
           id='select-format'
-          value={format}
+          name='format'
+          value={data.format}
           label='Data Format'
-          onChange={handleFormat}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'percentage'}>Percentage</MenuItem>
-          <MenuItem value={'fraction'}>Fraction</MenuItem>
-          <MenuItem value={'time'}>Time-based</MenuItem>
+          <MenuItem value='percentage'>Percentage</MenuItem>
+          <MenuItem value='fraction'>Fraction</MenuItem>
+          <MenuItem value='time'>Time-based</MenuItem>
         </Select>
       </FormControl>
 
@@ -189,13 +159,14 @@ export const SessionData = () => {
         <Select
           labelId='select-quantity-label'
           id='select-quantity'
-          value={quantity}
+          name='quantity'
+          value={data.quantity}
           label='Quantity'
-          onChange={handleQuantity}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'min'}>1-2</MenuItem>
-          <MenuItem value={'mod'}>3-4</MenuItem>
-          <MenuItem value={'max'}>5+</MenuItem>
+          <MenuItem value='min'>1-2</MenuItem>
+          <MenuItem value='mod'>3-4</MenuItem>
+          <MenuItem value='max'>5+</MenuItem>
         </Select>
       </FormControl>
 
@@ -207,13 +178,14 @@ export const SessionData = () => {
         <Select
           labelId='select-modality-label'
           id='select-modality'
-          value={modality}
+          name='modality'
+          value={data.modality}
           label='Modality'
-          onChange={handleModality}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'visual'}>Visual</MenuItem>
-          <MenuItem value={'verbal'}>Verbal</MenuItem>
-          <MenuItem value={'tactile'}>Tactile</MenuItem>
+          <MenuItem value='visual'>Visual</MenuItem>
+          <MenuItem value='verbal'>Verbal</MenuItem>
+          <MenuItem value='tactile'>Tactile</MenuItem>
         </Select>
       </FormControl>
 
@@ -225,19 +197,25 @@ export const SessionData = () => {
         <Select
           labelId='select-type-label'
           id='select-type'
-          value={type}
+          name='type'
+          value={data.type}
           label='Type'
-          onChange={handleType}
+          onChange={handleInputChange}
         >
-          <MenuItem value={'cues'}>Cues</MenuItem>
-          <MenuItem value={'prompts'}>Prompts</MenuItem>
-          <MenuItem value={'models'}>Models</MenuItem>
+          <MenuItem value='cues'>Cues</MenuItem>
+          <MenuItem value='prompts'>Prompts</MenuItem>
+          <MenuItem value='models'>Models</MenuItem>
         </Select>
       </FormControl>
 
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <FormControlLabel
-          control={<Checkbox onChange={toggleAddTarget} />}
+          control={
+            <Checkbox
+              id='add-target'
+              onChange={toggleAddTarget}
+            />
+          }
           label='Add another treatment target'
         />
       </FormControl>
