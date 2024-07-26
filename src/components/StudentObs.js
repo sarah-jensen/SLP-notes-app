@@ -8,20 +8,23 @@ import {
     Typography,
 } from '@mui/material';
 
-
+const initialValues = {
+  focus: '',
+  engagement: '',
+  other: '',
+};
 
 export const StudentObs = () => {
-    // Handle use selection for FOCUS
-  const [focus, setFocus] = useState('');
-  const handleFocus = (event) => {
-    setFocus(document.getElementById('focus').value);
-  };
+  const [observations, setObservations] = useState(initialValues);
 
-  // Handle use selection for ENGAGEMENT
-  const [engagement, setEngagement] = useState('');
-  const handleEngagement = (event) => {
-    setEngagement(document.getElementById('engagement').value);
+  const handleInputChange = (e) => {
+    const {name, value} = e.target;
+    setObservations({
+      ...observations,
+      [e.target.name]: value,
+    });
   };
+  console.log(observations)
 
   return (
     <div>
@@ -32,14 +35,15 @@ export const StudentObs = () => {
         <Select
           labelId='focus-label'
           id='focus'
-          value={focus}
+          name='focus'
+          value={observations.focus}
           label='Focus'
-          onChange={handleFocus}
+          defaultValue=''
+          onChange={handleInputChange}
         >
-          {/* Student displayed ___ */}
-          <MenuItem value={'typical focus'}>Typical</MenuItem>
-          <MenuItem value={'less focus than usual'}>Less than usual</MenuItem>
-          <MenuItem value={'more focus than usual'}>More than usual</MenuItem>
+          <MenuItem value='typical focus'>Typical</MenuItem>
+          <MenuItem value='less focus than usual'>Less than usual</MenuItem>
+          <MenuItem value='more focus than usual'>More than usual</MenuItem>
         </Select>
       </FormControl>
       
@@ -48,23 +52,26 @@ export const StudentObs = () => {
         <Select
           labelId='engagement-label'
           id='engagement'
-          value={engagement}
+          name='engagement'
+          value={observations.engagement}
           label='Engagement'
-          onChange={handleEngagement}
+          defaultValue=''
+          onChange={handleInputChange}
         >
-          {/* and was ___ */}
-          <MenuItem value={'typical engagement'}>Typical</MenuItem>
-          <MenuItem value={'less engagement than usual'}>Less than usual</MenuItem>
-          <MenuItem value={'more engagement than usual'}>More than usual</MenuItem>
+          <MenuItem value='typical engagement'>Typical</MenuItem>
+          <MenuItem value='less engagement than usual'>Less than usual</MenuItem>
+          <MenuItem value='more engagement than usual'>More than usual</MenuItem>
         </Select>
       </FormControl>
 
       <FormControl sx={{ m: 1, minWidth: 240 }}>
       <TextField
-        id="other-observation"
-        label="Other"
+        id='other-observation'
+        label='Other'
+        name='Other'
         multiline
-        defaultValue=""
+        defaultValue=''
+        onChange={handleInputChange}
       />
     </FormControl>
     </div>
