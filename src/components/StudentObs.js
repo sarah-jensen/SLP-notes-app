@@ -24,7 +24,7 @@ export const StudentObs = () => {
       [e.target.name]: value,
     });
   };
-  console.log(observations)
+  console.log(observations);
 
   return (
     <div>

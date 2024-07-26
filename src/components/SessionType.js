@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import {
   Checkbox,
@@ -11,64 +11,84 @@ import {
   Typography,
 } from '@mui/material';
 
+const initialValues = {
+  setting: '',
+  location: '',
+};
 export const SessionType = () => {
-  // Handle user selection for SETTING
-  const [setting, setSetting] = useState('');
-  const handleSetting = (event) => {
-    setSetting(event.target.value);
-  };
+  const [session, setSession] = useState(initialValues);
 
-  // Handle user selection for LOCATION
-  const [location, setLocation] = useState('');
-  const handleLocation = (event) => {
-    setLocation(event.target.value);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSession({
+      ...session,
+      [e.target.name]: value,
+    });
   };
+  console.log(session);
+  // // Handle user selection for SETTING
+  // const [setting, setSetting] = useState('');
+  // const handleSetting = (event) => {
+  //   setSetting(event.target.value);
+  // };
+
+  // // Handle user selection for LOCATION
+  // const [location, setLocation] = useState('');
+  // const handleLocation = (event) => {
+  //   setLocation(event.target.value);
+  // };
   // Handle user selection for MAKEUP
   const [makeup, setMakeup] = useState(false);
   const toggleMakeup = () => {
-    setMakeup(state => !state);
-    console.log(makeup)
+    setMakeup((state) => !state);
   };
+  console.log(makeup);
 
   return (
     <div>
       <Typography>Session Type</Typography>
-      
+
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id='setting-label'>Setting</InputLabel>
         <Select
           labelId='setting-label'
           id='setting'
-          value={setting}
+          name='setting'
+          value={session.setting}
           label='Setting'
-          onChange={handleSetting}
+          onChange={handleInputChange}
         >
           <MenuItem value={'group'}>Group</MenuItem>
           <MenuItem value={'individual'}>Individual</MenuItem>
         </Select>
       </FormControl>
-      
+
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id='location-label'>Location</InputLabel>
         <Select
           labelId='location-label'
           id='location'
-          value={location}
+          name='location'
+          value={session.location}
           label='Location'
-          onChange={handleLocation}
+          onChange={handleInputChange}
         >
           <MenuItem value={'pull-out'}>Pull-out</MenuItem>
           <MenuItem value={'push-in'}>Push-in</MenuItem>
         </Select>
       </FormControl>
-     
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-      <FormControlLabel control={
-        <Checkbox 
-          onChange={toggleMakeup}
-          />} label="Makeup" />      
-    </FormControl>
 
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              id='makeup'
+              onChange={toggleMakeup}
+            />
+          }
+          label='Makeup'
+        />
+      </FormControl>
     </div>
   );
 };
