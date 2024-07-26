@@ -35,13 +35,13 @@ export const SessionData = () => {
     });
   };
   console.log(data);
- 
+
   // Handle user selection for ADDITIONAL TARGET
   const [addTarget, setAddTarget] = useState(false);
   const toggleAddTarget = () => {
     setAddTarget((state) => !state);
-    console.log(addTarget);
   };
+  console.log(addTarget);
   return (
     <div>
       <Typography>Treatment Target</Typography>
